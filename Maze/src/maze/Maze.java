@@ -7,54 +7,30 @@ import java.util.Collections;
 
 public class Maze {
 
-    /**
-     * Numero de quadrados do labirinto
-     */
+    /* * Numero de quadrados do labirinto */
     private final int x;
-    /**
-     * Numero de quadrados do labirinto
-     */
+    /* * Numero de quadrados do labirinto */
     private final int y;
-    /**
-     * Largura em pixels
-     */
+    /* * Largura em pixels */
     private int ncols;
-    /**
-     * Altura em pixels
-     */
+    /* * Altura em pixels */
     private int nrows;
-    /**
-     * Mapa de quadrados do labirinto
-     */
+    /* * Mapa de quadrados do labirinto */
     private int[][] map;
-    /**
-     * Representacao em ASCII do labirinto
-     */
+    /* * Representacao em ASCII do labirinto */
     private ArrayList<String> rows;
-    /**
-     * Pontos adicionados pelo usuário representados por *
-     */
+    /* * Pontos adicionados pelo usuário representados por * */
     private ArrayList<Point> points;
-    /**
-     * Pontos adicionados pelo usuário representados por ?
-     */
+    /* * Pontos adicionados pelo usuário representados por ? */
     private ArrayList<Point> options;
 
-    /**
-     * Destino
-     */
+    /* * Destino */
     private int destinationX;
-    /**
-     * Destino
-     */
+    /* * Destino */
     private int destinationY;
-    /**
-     * Origem
-     */
+    /* * Origem */
     private int originX;
-    /**
-     * Origem
-     */
+    /* * Origem */
     private int originY;
 
     public Maze(int x, int y, int originX, int originY, int destinationX, int destinationY) {
@@ -108,7 +84,7 @@ public class Maze {
             return false;
         }
         char c = rows.get(y).charAt(x);
-        return c == ' ';
+        return c == ' ' || c == '?';
     }
 
     public void addPoint(int x, int y) {

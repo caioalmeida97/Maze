@@ -5,10 +5,10 @@ import java.util.List;
 public abstract class Node {
 
     Node parent;
-    State state;
+    MazeState state;
     double cost;
 
-    public Node(Node parent, State state, double unitaryCost) {
+    public Node(Node parent, MazeState state, double unitaryCost) {
         this.parent = parent;
         this.state = state;
         if (parent != null) {
