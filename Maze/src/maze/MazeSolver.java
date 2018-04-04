@@ -3,8 +3,11 @@ package maze;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MazeSolver {
+
+    private Object monitor = new Object();
 
     public static void main(String[] args) throws InterruptedException {
         int x = args.length >= 1 ? Integer.parseInt(args[0]) : 8;
@@ -19,9 +22,23 @@ public class MazeSolver {
         MazeSolver solver = new MazeSolver();
         Node result = solver.search(root);
         if (result != null) {
-            ((MazeNode)result).mazePath();
+            ((MazeNode) result).mazePath();
             System.out.printf("The path is shown above, with a total of %.0f steps :)\n", result.cost);
         }
+//        LinkedList<Integer> a = new LinkedList();
+//        a.add(1);
+//        a.add(2);
+//        a.add(3);
+//        a.add(5);
+//        int aa = 4;
+//        for (ListIterator<Integer> iterator = a.listIterator(); iterator.hasNext();) {
+//            if(aa < iterator.next()){
+//                iterator.previous();
+//                iterator.add(aa);
+//                break;
+//            }
+//        }
+//        System.out.println(a);
     }
 
     public Node search(Node root) {
@@ -36,11 +53,11 @@ public class MazeSolver {
                 List<Node> temp = node.successors();
                 for (Node successor : temp) {
                     int fsize = fringe.size();
-                    for (int i = 0; i < fsize; i++) {
-                        MazeNode indexNode = (MazeNode) fringe.get(i);
-                        if (((MazeNode) successor).f() <= indexNode.f()) {
+                    for (ListIterator<Node> iterator = fringe.listIterator(); iterator.hasNext();) {
+                        if (((MazeNode) successor).f() <= ((MazeNode) iterator.next()).f()) {
                             if (!fringe.contains(successor)) {
-                                fringe.add(i, successor);
+                                iterator.previous();
+                                iterator.add(successor);
                             }
                         }
                     }
