@@ -23,7 +23,6 @@ public abstract class Node {
             parent.printPath();
         }
         System.out.println(this);
-
     }
 
     public double getCost() {

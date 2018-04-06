@@ -18,7 +18,6 @@ public class MazeState {
         this.posY = posY;
         h = heuristic();
         this.description = description;
-        // TODO Auto-generated constructor stub
     }
     
     public boolean isGoal(){
@@ -26,6 +25,7 @@ public class MazeState {
     }
     
     public double heuristic(){
+        //Calculating heuristic by Euclidian distance between pos and dest
         return Math.sqrt(Math.pow((posX - destX), 2) + Math.pow((posY - destY), 2));
     }
     
@@ -48,6 +48,7 @@ public class MazeState {
     
     @Override
     public String toString(){
+        //For debugging
         return String.format("PosX: %d, PosY: %d, h: %.4f", posX, posY, h);
     }
     
